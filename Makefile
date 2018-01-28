@@ -1,8 +1,8 @@
 all: noise gol
 
-noise: 
+noise: noise.c
 	gcc noise.c -lminifb -lX11 -o noise
-gol:
+gol: gol.c
 	gcc gol.c -lminifb -lX11 -o gol
 clean:
 	rm noise gol
