@@ -16,6 +16,7 @@
 #define SLEEP_MILLIS 100
 
 static unsigned int s_buffer[WIDTH * HEIGHT];
+static unsigned int neighbours[WIDTH * HEIGHT];
 
 static unsigned int dead = MFB_RGB(0xFF,0xFF,0xFF);
 static unsigned int alive = MFB_RGB(0,0,0);
@@ -83,8 +84,14 @@ int main()
 		for (i = 0; i < WIDTH * HEIGHT; ++i)
 		{
 			//s_buffer[i] = MFB_RGB(0, 0, 0xFF); 
-            nNeigh = numberOfNeighbours(i);
-            
+            neighbours[i] = numberOfNeighbours(i);
+        }
+
+        for (i = 0; i < WIDTH * HEIGHT; ++i)
+		{
+			//s_buffer[i] = MFB_RGB(0, 0, 0xFF); 
+            nNeigh = neighbours[i];
+               
             /*
              *
                 Any live cell with fewer than two live neighbours dies, as if caused by underpopulation.
